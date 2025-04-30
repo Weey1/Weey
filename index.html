@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Weey</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 110px;
+            margin-top: 100px;
+            background: linear-gradient(270deg, #ff004f, #00d2ff, #ff004f);
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 5s ease infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .socials {
+            margin: 20px;
+            font-size: 20px;
+            color: #00ffff;
+        }
+        .quote {
+            margin-top: 30px;
+            font-size: 28px;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weey</h1>
+    <div style="margin: 40px 0;"><hr style="border: 4px solid white;"><hr style="border: 4px solid white;"><hr style="border: 4px solid white;"></div>
+<div class="socials">
+        <a href="https://www.snapchat.com/add/w5iiz" target="_blank" style="color:#0ff;">Snap: w5iiz</a> | <a href="https://instagram.com/e6_l" target="_blank" style="color:#0ff;">Ig: e6_l</a>
+    </div>
+    <div class="quote">
+        العقل المبرمج لا يتوقف عن الابتكار<br>
+        The programming mind never stops innovating
+    </div>
+<div style="margin: 40px 0;">
+    <hr style="border: 4px solid white;">
+    <hr style="border: 4px solid white;">
+    <hr style="border: 4px solid white;">
+</div>
+<div style="font-size: 40px; font-weight: bold;">511</div>
+
+    <audio autoplay loop>
+        <source src="melancholia.mp3" type="audio/mpeg">
+    </audio>
+
+    <div style="margin-top: 50px;">
+        
+        <canvas id="gameCanvas" width="300" height="300" style="background:#222; margin: 20px auto;"></canvas><br>
+        <button onclick="jump()" style="padding:10px 20px;font-size:16px;background:red;color:white;border:none;">قفز</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        let y = 250, vy = 0, gravity = 0.8, jumping = false;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#f00";
+            ctx.fillRect(140, y, 20, 20);
+            vy += gravity;
+            y += vy;
+            if (y > 250) {
+                y = 250;
+                vy = 0;
+                jumping = false;
+            }
+            requestAnimationFrame(draw);
+        }
+
+        function jump() {
+            if (!jumping) {
+                vy = -12;
+                jumping = true;
+            }
+        }
+
+        draw();
+    </script>
+    </body>
+    
+</html>
